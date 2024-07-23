@@ -12,17 +12,17 @@ const port = process.env.PORT || 3000;
 
 // Create a Schema object
 
-const schema = new mongoose.Schema(
+const StudentSchema = new mongoose.Schema(
   {
     myName: String,
     mySID: String,
   },
-  { collection: "“s24students”" }
+  { collection: "s24students" }
 );
 
 // Create a Model object
 
-const studentModel = mongoose.model("student", schema);
+const StudentModel = mongoose.model("student", StudentSchema);
 
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/form.html");
@@ -38,7 +38,7 @@ app.post("/", async (req, res) => {
     useUnifiedTopology: true,
   });
   // add the data to the database
-  const student = new studentModel({
+  const student = new StudentModel({
     myName: "Lucas Le",
     mySID: "300382828",
   });
